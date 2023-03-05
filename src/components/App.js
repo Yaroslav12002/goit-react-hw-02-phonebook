@@ -22,15 +22,19 @@ export class App extends Component {
   // -------------------------//
   // Add and Delete contact   //
   // -------------------------//
-  addContact = newContact => {
+  addContact = (newContact, resetForm) => {
     const findContact = this.state.contacts.find(
       contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
     );
-    findContact
-      ? Notify.failure(`${newContact.name} is already in contact`)
-      : this.setState(({ contacts }) => ({
-          contacts: [...contacts, newContact],
-        }));
+    if (findContact) {
+      Notify.failure(`${newContact.name} is already in contact`);
+      return;
+    }
+
+    this.setState(({ contacts }) => ({
+      contacts: [...contacts, newContact],
+    }));
+    resetForm();
   };
 
   deleteContact = idForDelete => {
