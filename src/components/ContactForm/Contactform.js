@@ -1,8 +1,13 @@
 import PropTypes from 'prop-types';
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
-import { SubmitBtn, Label, LabelSpan } from './ContactForm.styled';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import {
+  SubmitBtn,
+  Label,
+  LabelSpan,
+  ErrorMessage,
+} from './ContactForm.styled';
+import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 
 const initialValues = { name: '', number: '' };
